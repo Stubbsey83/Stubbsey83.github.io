@@ -35,33 +35,25 @@ body {
   z-index: 5;
 }
 
-/* Wave styles */
+/* Wave styles using inline SVG for a realistic wave */
 .wave {
   position: absolute;
   bottom: 0;
-  left: 50%;
+  left: 0;
   width: 200%;
   height: 100px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 43%;
-  transform: translateX(-50%);
-  animation: wave 10s linear infinite;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="100" viewBox="0 0 1200 100"><path d="M0,30 C150,80 350,0 600,50 C850,100 1050,20 1200,30 L1200,100 L0,100 Z" fill="%23ffffff" opacity="0.5"/></svg>') repeat-x;
+  animation: animate-wave 10s linear infinite;
 }
 
 .wave.wave2 {
-  background: rgba(255, 255, 255, 0.3);
-  animation-duration: 15s;
   bottom: 10px;
+  opacity: 0.6;
+  animation: animate-wave 15s linear infinite reverse;
 }
 
-@keyframes wave {
-  0% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(-20px);
-  }
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
+/* Keyframes for horizontal wave movement */
+@keyframes animate-wave {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
